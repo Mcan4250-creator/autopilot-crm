@@ -1,57 +1,50 @@
 export default function Home() {
   return (
-    <div style={{ fontFamily: "Segoe UI, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
       {/* Header */}
       <header style={{
         position: "sticky",
         top: 0,
-        backgroundColor: "#fff",
+        backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
         padding: "1rem 2rem",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        zIndex: 100,
+        zIndex: 10
       }}>
-        {/* Logo und App-Name */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <img src="/Logo.png" alt="Logo" style={{ height: "60px" }} />
-          <span style={{ fontSize: "1.5rem", fontWeight: "600", color: "#1f2937" }}>Autopilot CRM</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 50 }} />
+          <span style={{ fontSize: "1.4rem", fontWeight: "600", color: "#1f2937" }}>Autopilot CRM</span>
         </div>
-
-        {/* Navigation */}
-        <nav style={{ display: "flex", gap: "2rem" }}>
-          <a href="/" style={navStyle}>Start</a>
-          <a href="/termine" style={navStyle}>Termine</a>
-          <a href="/einstellungen" style={navStyle}>Einstellungen</a>
+        <nav style={{ display: "flex", gap: "1.5rem" }}>
+          <a href="/" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Start</a>
+          <a href="/termine" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Termine</a>
+          <a href="/einstellungen" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Einstellungen</a>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        padding: "4rem 2rem"
-      }}>
-        <h1 style={{ fontSize: "2.8rem", fontWeight: "700", color: "#1f2937", marginBottom: "1rem" }}>
-          Willkommen bei Autopilot CRM
+      <main style={{ padding: "6rem 2rem", textAlign: "center" }}>
+        <h1 style={{ fontSize: "3rem", color: "#1f2937", marginBottom: "1rem" }}>
+          Digitalisieren Sie Ihre Werkstattprozesse
         </h1>
-        <p style={{ fontSize: "1.25rem", color: "#4b5563" }}>
-          Ihre smarte Kundenverwaltung für die Werkstatt.
+        <p style={{ fontSize: "1.25rem", color: "#4b5563", marginBottom: "2rem" }}>
+          Mit Autopilot CRM verwalten Sie Kunden & Termine in Sekunden.
         </p>
-      </section>
+        <a href="/termine" style={{
+          display: "inline-block",
+          backgroundColor: "#2563eb",
+          color: "#ffffff",
+          padding: "0.75rem 1.5rem",
+          borderRadius: "8px",
+          fontWeight: 600,
+          fontSize: "1rem",
+          textDecoration: "none"
+        }}>
+          Jetzt Termin buchen
+        </a>
+      </main>
     </div>
   );
 }
-
-const navStyle = {
-  textDecoration: "none",
-  fontSize: "1rem",
-  color: "#2563eb",
-  fontWeight: 500,
-  padding: "0.5rem 0",
-  transition: "color 0.2s ease",
-};
