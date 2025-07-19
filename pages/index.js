@@ -92,30 +92,40 @@ export default function Home() {
       </header>
 
       {/* MAIN CONTENT */}
-      <main style={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "4rem 1rem" }}>
-        <h1 style={{ fontSize: "2.5rem", fontWeight: "bold", color: "#1f2937", textAlign: "center" }}>
-          Willkommen bei Autopilot CRM
-        </h1>
-        <p style={{ marginTop: "1rem", fontSize: "1rem", color: "#4b5563", textAlign: "center" }}>
-          Ihre smarte Kundenverwaltung für die Werkstatt.
-        </p>
-        <a
-          href="/termine"
-          style={{
-            marginTop: "2rem",
-            padding: "0.75rem 1.5rem",
-            backgroundColor: "#2563eb",
-            color: "#fff",
-            border: "none",
-            borderRadius: "6px",
-            fontSize: "1rem",
-            textDecoration: "none",
-            fontWeight: 600
-          }}
-        >
-          Jetzt Termin buchen
-        </a>
-      </main>
+     <main style={{ flexGrow: 1, padding: "4rem 1rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+  <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "#1f2937", marginBottom: "2rem", textAlign: "center" }}>
+    Willkommen bei Autopilot CRM
+  </h1>
+
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "1.5rem",
+    width: "100%",
+    maxWidth: "800px"
+  }}>
+    {/* Kundenverwaltung */}
+    <a href="/kunden" style={tileStyle}>
+      <div style={iconStyle}>🧾</div>
+      <h3 style={tileTitle}>Kundenverwaltung</h3>
+      <p style={tileText}>Alle Kundendaten zentral verwalten & durchsuchen</p>
+    </a>
+
+    {/* Termine */}
+    <a href="/termine" style={tileStyle}>
+      <div style={iconStyle}>📅</div>
+      <h3 style={tileTitle}>Termine</h3>
+      <p style={tileText}>Anstehende Termine ansehen, erstellen & verwalten</p>
+    </a>
+
+    {/* Einstellungen */}
+    <a href="/einstellungen" style={tileStyle}>
+      <div style={iconStyle}>⚙️</div>
+      <h3 style={tileTitle}>Einstellungen</h3>
+      <p style={tileText}>Benutzerkonto, Öffnungszeiten, Benachrichtigungen</p>
+    </a>
+  </div>
+</main>
 
       {/* FOOTER */}
       <footer style={{
@@ -139,4 +149,29 @@ const menuLinkStyle = {
   fontSize: "1rem",
   marginBottom: "1rem",
 };
+const tileStyle = {
+  backgroundColor: "#fff",
+  borderRadius: "12px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+  padding: "1.5rem",
+  textDecoration: "none",
+  color: "#1f2937",
+  transition: "transform 0.2s",
+};
+
+const tileTitle = {
+  fontSize: "1.2rem",
+  fontWeight: "600",
+  margin: "0.5rem 0 0.25rem 0"
+};
+
+const tileText = {
+  fontSize: "0.95rem",
+  color: "#4b5563",
+};
+
+const iconStyle = {
+  fontSize: "2rem",
+};
+
 
