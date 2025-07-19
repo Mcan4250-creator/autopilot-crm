@@ -28,6 +28,8 @@ setFormularOffen(false);
 
 const kundeBearbeiten = (kunde) => { setNeuerKunde({ name: kunde.name, kennzeichen: kunde.kennzeichen, modell: kunde.modell }); setBearbeiteKundeId(kunde.id); setFormularOffen(true); };
 
+const kundeLoeschen = (id) => { if (confirm("Möchtest du diesen Kunden wirklich löschen?")) { setKunden(kunden.filter(k => k.id !== id)); } };
+
 return ( <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}> <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1.5rem" }}> Kundenübersicht </h1>
 
 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", gap: "1rem", flexWrap: "wrap" }}>
@@ -103,12 +105,20 @@ return ( <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}> <h1 
             <p style={{ margin: "0.25rem 0", color: "#4b5563" }}>Kennzeichen: {kunde.kennzeichen}</p>
             <p style={{ margin: 0, color: "#4b5563" }}>Fahrzeug: {kunde.modell}</p>
           </div>
-          <button
-            onClick={() => kundeBearbeiten(kunde)}
-            style={{ padding: "0.4rem 0.8rem", backgroundColor: "#fbbf24", border: "none", borderRadius: "4px", cursor: "pointer" }}
-          >
-            ✏️ Bearbeiten
-          </button>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <button
+              onClick={() => kundeBearbeiten(kunde)}
+              style={{ padding: "0.4rem 0.8rem", backgroundColor: "#fbbf24", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              ✏️ Bearbeiten
+            </button>
+            <button
+              onClick={() => kundeLoeschen(kunde.id)}
+              style={{ padding: "0.4rem 0.8rem", backgroundColor: "#ef4444", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}
+            >
+              🗑 Löschen
+            </button>
+          </div>
         </div>
       ))
     ) : (
@@ -124,9 +134,6 @@ const inputStyle = { padding: "0.6rem 1rem", border: "1px solid #ccc", borderRad
 const formularStyle = { marginBottom: "2rem", backgroundColor: "#f9fafb", padding: "1rem", borderRadius: "8px", boxShadow: "0 1px 4px rgba(0,0,0,0.05)", };
 
 const kundenBox = { padding: "1rem", backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 2px 6px rgba(0,0,0,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", };
-
-
-
 
 
 
