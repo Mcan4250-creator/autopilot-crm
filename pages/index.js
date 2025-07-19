@@ -55,8 +55,3 @@ const navLink = {
   fontWeight: '500',
   fontSize: '1rem',
 };
-
-      </h1>
-    </div>
-  );
-}
