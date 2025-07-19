@@ -135,6 +135,3 @@ const formularStyle = { marginBottom: "2rem", backgroundColor: "#f9fafb", paddin
 
 const kundenBox = { padding: "1rem", backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 2px 6px rgba(0,0,0,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", };
 
-
-
-    
