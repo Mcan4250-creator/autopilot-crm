@@ -1,116 +1,61 @@
-import { useState, useEffect } from "react";
-
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Set initial mobile state
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize(); // Direkt ausführen
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
-      {/* Header */}
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          backgroundColor: "#ffffff",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
-          padding: "1rem 2rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          zIndex: 10,
-        }}
-      >
-        {/* Logo + Titel */}
+    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      {/* HEADER */}
+      <header style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "1rem 2rem",
+        backgroundColor: "#fff",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+        position: "sticky",
+        top: 0,
+        zIndex: 10
+      }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 40 }} />
           <span style={{ fontSize: "1.3rem", fontWeight: 600, color: "#1f2937" }}>Autopilot CRM</span>
         </div>
-
-        {/* Navigation */}
-        {isMobile ? (
-          <>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              style={{
-                background: "none",
-                border: "none",
-                fontSize: "1.5rem",
-                cursor: "pointer",
-              }}
-              aria-label="Menu öffnen"
-            >
-              ☰
-            </button>
-            {menuOpen && (
-              <nav
-                style={{
-                  position: "absolute",
-                  top: "70px",
-                  right: "20px",
-                  backgroundColor: "#fff",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                  borderRadius: "8px",
-                  padding: "1rem",
-                }}
-              >
-                <a href="/" style={navLinkStyle}>Start</a>
-                <a href="/termine" style={navLinkStyle}>Termine</a>
-                <a href="/einstellungen" style={navLinkStyle}>Einstellungen</a>
-              </nav>
-            )}
-          </>
-        ) : (
-          <nav style={{ display: "flex", gap: "1.5rem" }}>
-            <a href="/" style={navLinkStyle}>Start</a>
-            <a href="/termine" style={navLinkStyle}>Termine</a>
-            <a href="/einstellungen" style={navLinkStyle}>Einstellungen</a>
-          </nav>
-        )}
+        <nav style={{ display: "flex", gap: "1.5rem" }}>
+          <a href="/" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Start</a>
+          <a href="/termine" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Termine</a>
+          <a href="/einstellungen" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Einstellungen</a>
+        </nav>
       </header>
 
-      {/* Hauptinhalt */}
-      <main style={{ padding: "4rem 2rem", textAlign: "center" }}>
-        <h1 style={{ fontSize: "2.5rem", fontWeight: "bold", color: "#1f2937", marginBottom: "1rem" }}>
-          Digitalisieren Sie Ihre Werkstattprozesse
+      {/* MAIN CONTENT */}
+      <main style={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "4rem 1rem" }}>
+        <h1 style={{ fontSize: "2.5rem", fontWeight: "bold", color: "#1f2937", textAlign: "center" }}>
+          Willkommen bei Autopilot CRM
         </h1>
-        <p style={{ fontSize: "1.2rem", color: "#4b5563", marginBottom: "2rem" }}>
-          Mit Autopilot CRM verwalten Sie Kunden & Termine in Sekunden.
+        <p style={{ marginTop: "1rem", fontSize: "1rem", color: "#4b5563", textAlign: "center" }}>
+          Ihre smarte Kundenverwaltung für die Werkstatt.
         </p>
-        <a
-          href="/termine"
-          style={{
-            backgroundColor: "#2563eb",
-            color: "#ffffff",
-            padding: "0.75rem 1.5rem",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontWeight: 600,
-          }}
-        >
+        <button style={{
+          marginTop: "2rem",
+          padding: "0.75rem 1.5rem",
+          backgroundColor: "#2563eb",
+          color: "#fff",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "1rem",
+          cursor: "pointer"
+        }}>
           Jetzt Termin buchen
-        </a>
+        </button>
       </main>
+
+      {/* FOOTER */}
+      <footer style={{
+        backgroundColor: "#1f2937",
+        color: "#fff",
+        textAlign: "center",
+        padding: "1rem",
+        fontSize: "0.9rem"
+      }}>
+        © {new Date().getFullYear()} Akbulut Digital – Alle Rechte vorbehalten.
+      </footer>
     </div>
   );
 }
-
-// Navigationslink-Stil
-const navLinkStyle = {
-  color: "#2563eb",
-  textDecoration: "none",
-  fontWeight: 500,
-  display: "block",
-  marginBottom: "0.5rem",
-};
-
