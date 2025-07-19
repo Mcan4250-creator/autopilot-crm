@@ -1,6 +1,7 @@
 export default function Home() {
   return (
     <div>
+      {/* Header */}
       <header style={{
         position: "sticky",
         top: 0,
@@ -13,7 +14,7 @@ export default function Home() {
         zIndex: 10,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img src="/logo.png" alt="Akbulut Digital Logo" style={{ height: 40 }} />
+          <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 40 }} />
           <span style={{ fontSize: "1.2rem", fontWeight: 600, color: "#1f2937" }}>Autopilot CRM</span>
         </div>
         <nav style={{ display: "flex", gap: "1.5rem" }}>
@@ -23,6 +24,7 @@ export default function Home() {
         </nav>
       </header>
 
+      {/* Hauptinhalt */}
       <main style={{
         display: "flex",
         flexDirection: "column",
