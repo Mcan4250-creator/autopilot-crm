@@ -104,7 +104,7 @@ export default function Home() {
         )}
       </header>
 
-      {/* Hero bleibt unverändert */}
+      {/* Hero Section */}
       <main style={{ padding: "6rem 2rem", textAlign: "center" }}>
         <h1 style={{ fontSize: "3rem", color: "#1f2937", marginBottom: "1rem" }}>
           Digitalisieren Sie Ihre Werkstattprozesse
@@ -128,3 +128,4 @@ export default function Home() {
     </div>
   );
 }
+
