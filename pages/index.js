@@ -1,4 +1,24 @@
+import { useState, useEffect } from "react";
+
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  const navLinks = [
+    { name: "Start", path: "/" },
+    { name: "Termine", path: "/termine" },
+    { name: "Einstellungen", path: "/einstellungen" },
+  ];
+
   return (
     <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
       {/* Header */}
@@ -13,45 +33,78 @@ export default function Home() {
         alignItems: "center",
         zIndex: 10
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 50 }} />
+        {/* Logo */}
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <img src="/Logo.png" alt="Logo" style={{ height: "50px" }} />
           <span style={{ fontSize: "1.4rem", fontWeight: "600", color: "#1f2937" }}>Autopilot CRM</span>
         </div>
-      <nav style={{ display: "flex", gap: "2rem" }}>
-  {[
-    { name: "Start", path: "/" },
-    { name: "Termine", path: "/termine" },
-    { name: "Einstellungen", path: "/einstellungen" },
-  ].map((item) => (
-    <a
-      key={item.path}
-      href={item.path}
-      style={{
-        color: window.location.pathname === item.path ? "#1f2937" : "#2563eb",
-        fontWeight: window.location.pathname === item.path ? "700" : "500",
-        textDecoration: "none",
-        paddingBottom: "4px",
-        borderBottom:
-          window.location.pathname === item.path
-            ? "2px solid #2563eb"
-            : "2px solid transparent",
-        transition: "all 0.3s",
-      }}
-      onMouseEnter={(e) =>
-        (e.target.style.color = "#1e40af")
-      }
-      onMouseLeave={(e) =>
-        (e.target.style.color =
-          window.location.pathname === item.path ? "#1f2937" : "#2563eb")
-      }
-    >
-      {item.name}
-    </a>
-  ))}
-</nav>
+
+        {/* Navigation */}
+        {isMobile ? (
+          <div>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{
+                fontSize: "1.5rem",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              ☰
+            </button>
+            {menuOpen && (
+              <div style={{
+                position: "absolute",
+                top: "70px",
+                right: "20px",
+                backgroundColor: "#ffffff",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                borderRadius: "8px",
+                padding: "1rem",
+                zIndex: 20
+              }}>
+                {navLinks.map((item) => (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    style={{
+                      display: "block",
+                      padding: "0.5rem 0",
+                      textDecoration: "none",
+                      color: "#2563eb",
+                      fontWeight: window.location.pathname === item.path ? "700" : "500",
+                    }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <nav style={{ display: "flex", gap: "2rem" }}>
+            {navLinks.map((item) => (
+              <a
+                key={item.path}
+                href={item.path}
+                style={{
+                  color: window.location.pathname === item.path ? "#1f2937" : "#2563eb",
+                  fontWeight: window.location.pathname === item.path ? "700" : "500",
+                  textDecoration: "none",
+                  borderBottom: window.location.pathname === item.path ? "2px solid #2563eb" : "2px solid transparent",
+                  transition: "all 0.3s",
+                }}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
-      {/* Hero Section */}
+      {/* Hero bleibt unverändert */}
       <main style={{ padding: "6rem 2rem", textAlign: "center" }}>
         <h1 style={{ fontSize: "3rem", color: "#1f2937", marginBottom: "1rem" }}>
           Digitalisieren Sie Ihre Werkstattprozesse
