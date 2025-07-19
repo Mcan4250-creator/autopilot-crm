@@ -14,7 +14,7 @@ export default function Home() {
         zIndex: 10,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 40 }} />
+          <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 60 }} />
           <span style={{ fontSize: "1.2rem", fontWeight: 600, color: "#1f2937" }}>Autopilot CRM</span>
         </div>
         <nav style={{ display: "flex", gap: "1.5rem" }}>
