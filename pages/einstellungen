@@ -1,0 +1,8 @@
+export default function Einstellungen() {
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Einstellungen</h1>
+      <p>Hier kannst du bald Einstellungen vornehmen.</p>
+    </div>
+  );
+}
