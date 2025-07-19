@@ -15,6 +15,7 @@ export default function Home() {
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      
       {/* HEADER */}
       <header style={{
         display: "flex",
@@ -30,7 +31,9 @@ export default function Home() {
         {/* LOGO */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 40 }} />
-          <span style={{ fontSize: "1.3rem", fontWeight: 600, color: "#1f2937" }}>Autopilot CRM</span>
+          <span style={{ fontSize: "1.3rem", fontWeight: 600, color: "#1f2937" }}>
+            Akbulut Digital KundenMeister
+          </span>
         </div>
 
         {/* NAVIGATION */}
@@ -91,41 +94,41 @@ export default function Home() {
         )}
       </header>
 
-      {/* MAIN CONTENT */}
-     <main style={{ flexGrow: 1, padding: "4rem 1rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-  <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "#1f2937", marginBottom: "2rem", textAlign: "center" }}>
-    Willkommen bei Autopilot CRM
-  </h1>
+      {/* MAIN CONTENT – KACHELN */}
+      <main style={{ flexGrow: 1, padding: "4rem 1rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "#1f2937", marginBottom: "2rem", textAlign: "center" }}>
+          Willkommen bei Akbulut Digital KundenMeister
+        </h1>
 
-  <div style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "1.5rem",
-    width: "100%",
-    maxWidth: "800px"
-  }}>
-    {/* Kundenverwaltung */}
-    <a href="/kunden" style={tileStyle}>
-      <div style={iconStyle}>🧾</div>
-      <h3 style={tileTitle}>Kundenverwaltung</h3>
-      <p style={tileText}>Alle Kundendaten zentral verwalten & durchsuchen</p>
-    </a>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "1.5rem",
+          width: "100%",
+          maxWidth: "800px"
+        }}>
+          {/* Kundenverwaltung */}
+          <a href="/kunden" style={tileStyle}>
+            <div style={iconStyle}>🧾</div>
+            <h3 style={tileTitle}>Kundenverwaltung</h3>
+            <p style={tileText}>Alle Kundendaten zentral verwalten & durchsuchen</p>
+          </a>
 
-    {/* Termine */}
-    <a href="/termine" style={tileStyle}>
-      <div style={iconStyle}>📅</div>
-      <h3 style={tileTitle}>Termine</h3>
-      <p style={tileText}>Anstehende Termine ansehen, erstellen & verwalten</p>
-    </a>
+          {/* Termine */}
+          <a href="/termine" style={tileStyle}>
+            <div style={iconStyle}>📅</div>
+            <h3 style={tileTitle}>Termine</h3>
+            <p style={tileText}>Anstehende Termine ansehen, erstellen & verwalten</p>
+          </a>
 
-    {/* Einstellungen */}
-    <a href="/einstellungen" style={tileStyle}>
-      <div style={iconStyle}>⚙️</div>
-      <h3 style={tileTitle}>Einstellungen</h3>
-      <p style={tileText}>Benutzerkonto, Öffnungszeiten, Benachrichtigungen</p>
-    </a>
-  </div>
-</main>
+          {/* Einstellungen */}
+          <a href="/einstellungen" style={tileStyle}>
+            <div style={iconStyle}>⚙️</div>
+            <h3 style={tileTitle}>Einstellungen</h3>
+            <p style={tileText}>Benutzerkonto, Öffnungszeiten, Benachrichtigungen</p>
+          </a>
+        </div>
+      </main>
 
       {/* FOOTER */}
       <footer style={{
@@ -141,7 +144,7 @@ export default function Home() {
   );
 }
 
-// 👇 Style für alle Links
+// 🔗 Link-Styling
 const menuLinkStyle = {
   color: "#2563eb",
   textDecoration: "none",
@@ -149,6 +152,8 @@ const menuLinkStyle = {
   fontSize: "1rem",
   marginBottom: "1rem",
 };
+
+// 🧱 Kachel-Styling
 const tileStyle = {
   backgroundColor: "#fff",
   borderRadius: "12px",
