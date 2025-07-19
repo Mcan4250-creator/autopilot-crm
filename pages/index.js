@@ -17,11 +17,38 @@ export default function Home() {
           <img src="/Logo.png" alt="Akbulut Digital Logo" style={{ height: 50 }} />
           <span style={{ fontSize: "1.4rem", fontWeight: "600", color: "#1f2937" }}>Autopilot CRM</span>
         </div>
-        <nav style={{ display: "flex", gap: "1.5rem" }}>
-          <a href="/" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Start</a>
-          <a href="/termine" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Termine</a>
-          <a href="/einstellungen" style={{ color: "#2563eb", textDecoration: "none", fontWeight: 500 }}>Einstellungen</a>
-        </nav>
+      <nav style={{ display: "flex", gap: "2rem" }}>
+  {[
+    { name: "Start", path: "/" },
+    { name: "Termine", path: "/termine" },
+    { name: "Einstellungen", path: "/einstellungen" },
+  ].map((item) => (
+    <a
+      key={item.path}
+      href={item.path}
+      style={{
+        color: window.location.pathname === item.path ? "#1f2937" : "#2563eb",
+        fontWeight: window.location.pathname === item.path ? "700" : "500",
+        textDecoration: "none",
+        paddingBottom: "4px",
+        borderBottom:
+          window.location.pathname === item.path
+            ? "2px solid #2563eb"
+            : "2px solid transparent",
+        transition: "all 0.3s",
+      }}
+      onMouseEnter={(e) =>
+        (e.target.style.color = "#1e40af")
+      }
+      onMouseLeave={(e) =>
+        (e.target.style.color =
+          window.location.pathname === item.path ? "#1f2937" : "#2563eb")
+      }
+    >
+      {item.name}
+    </a>
+  ))}
+</nav>
       </header>
 
       {/* Hero Section */}
