@@ -1,11 +1,15 @@
-
-
 import React, { useEffect, useState } from "react";
 
 const Kunden = () => {
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [newCustomer, setNewCustomer] = useState({
+    name: "",
+    license: "",
+    car: "",
+    image: null,
+  });
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("customers")) || [];
@@ -23,6 +27,33 @@ const Kunden = () => {
         c.car.toLowerCase().includes(term)
     );
     setFilteredCustomers(filtered);
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNewCustomer((prev) => ({
+        ...prev,
+        image: reader.result,
+      }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleAddCustomer = () => {
+    if (!newCustomer.name || !newCustomer.license || !newCustomer.car) {
+      alert("Bitte alle Felder ausfüllen.");
+      return;
+    }
+
+    const updated = [...customers, newCustomer];
+    setCustomers(updated);
+    setFilteredCustomers(updated);
+    localStorage.setItem("customers", JSON.stringify(updated));
+
+    setNewCustomer({ name: "", license: "", car: "", image: null });
   };
 
   const handleDelete = (index) => {
@@ -55,20 +86,63 @@ const Kunden = () => {
         }}
       />
 
-      <button
-        onClick={() => alert("Kundenformular folgt…")}
+      <div
         style={{
-          marginBottom: "1.5rem",
-          padding: "0.6rem 1rem",
-          backgroundColor: "#2563eb",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
+          background: "#f9f9f9",
+          padding: "1rem",
+          borderRadius: "8px",
+          marginBottom: "2rem",
+          maxWidth: "500px",
         }}
       >
-        + Kunde hinzufügen
-      </button>
+        <h3 style={{ marginBottom: "1rem" }}>Neuen Kunden hinzufügen</h3>
+
+        <input
+          placeholder="Name"
+          value={newCustomer.name}
+          onChange={(e) =>
+            setNewCustomer((prev) => ({ ...prev, name: e.target.value }))
+          }
+          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
+        />
+        <input
+          placeholder="Kennzeichen"
+          value={newCustomer.license}
+          onChange={(e) =>
+            setNewCustomer((prev) => ({ ...prev, license: e.target.value }))
+          }
+          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
+        />
+        <input
+          placeholder="Fahrzeug"
+          value={newCustomer.car}
+          onChange={(e) =>
+            setNewCustomer((prev) => ({ ...prev, car: e.target.value }))
+          }
+          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
+        />
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          style={{ marginBottom: "1rem" }}
+        />
+
+        <button
+          onClick={handleAddCustomer}
+          style={{
+            padding: "0.6rem 1rem",
+            backgroundColor: "#2563eb",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+          }}
+        >
+          + Hinzufügen
+        </button>
+      </div>
 
       {filteredCustomers.map((c, index) => (
         <div
@@ -84,10 +158,21 @@ const Kunden = () => {
           <strong style={{ fontSize: "1.2rem" }}>{c.name}</strong>
           <p>Kennzeichen: {c.license}</p>
           <p>Fahrzeug: {c.car}</p>
+          {c.image && (
+            <img
+              src={c.image}
+              alt="Fahrzeugbild"
+              style={{
+                maxWidth: "300px",
+                marginTop: "0.5rem",
+                borderRadius: "6px",
+              }}
+            />
+          )}
 
           <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.5rem" }}>
             <button
-              onClick={() => alert("Bearbeiten kommt später")}
+              onClick={() => alert("Bearbeiten folgt bald")}
               style={{
                 backgroundColor: "#fbbf24",
                 color: "#000",
@@ -121,3 +206,4 @@ const Kunden = () => {
 };
 
 export default Kunden;
+
