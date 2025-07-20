@@ -75,9 +75,14 @@ export default function Kunden() {
           📎 Fahrzeugschein hochladen:
         </label>
         <input
-          type="file"
-          onChange={(e) => setImage(e.target.files[0])}
-          style={styles.input}
+       <label style={{ fontWeight: "500", marginBottom: "0.5rem", display: "block" }}>
+  📎 Fahrzeugschein hochladen:
+</label>
+<input
+  type="file"
+  onChange={(e) => setImage(e.target.files[0])}
+  style={styles.input}
+/>
         />
         <button onClick={handleAddCustomer} style={styles.button}>
           + Hinzufügen
