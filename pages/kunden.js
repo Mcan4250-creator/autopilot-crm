@@ -86,63 +86,95 @@ const Kunden = () => {
         }}
       />
 
-      <div
-        style={{
-          background: "#f9f9f9",
-          padding: "1rem",
-          borderRadius: "8px",
-          marginBottom: "2rem",
-          maxWidth: "500px",
-        }}
-      >
-        <h3 style={{ marginBottom: "1rem" }}>Neuen Kunden hinzufügen</h3>
+     <div
+  style={{
+    background: "#f9f9f9",
+    padding: "1rem",
+    borderRadius: "8px",
+    marginBottom: "2rem",
+    maxWidth: "500px",
+  }}
+>
+  <h3 style={{ marginBottom: "1rem" }}>Neuen Kunden hinzufügen</h3>
 
-        <input
-          placeholder="Name"
-          value={newCustomer.name}
-          onChange={(e) =>
-            setNewCustomer((prev) => ({ ...prev, name: e.target.value }))
-          }
-          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
-        />
-        <input
-          placeholder="Kennzeichen"
-          value={newCustomer.license}
-          onChange={(e) =>
-            setNewCustomer((prev) => ({ ...prev, license: e.target.value }))
-          }
-          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
-        />
-        <input
-          placeholder="Fahrzeug"
-          value={newCustomer.car}
-          onChange={(e) =>
-            setNewCustomer((prev) => ({ ...prev, car: e.target.value }))
-          }
-          style={{ marginBottom: "0.5rem", width: "100%", padding: "0.5rem" }}
-        />
+  <input
+    placeholder="Name"
+    value={newCustomer.name}
+    onChange={(e) =>
+      setNewCustomer((prev) => ({ ...prev, name: e.target.value }))
+    }
+    style={{
+      marginBottom: "0.5rem",
+      width: "100%",
+      padding: "0.6rem",
+      borderRadius: "6px",
+      border: "1px solid #ccc",
+    }}
+  />
+  <input
+    placeholder="Kennzeichen"
+    value={newCustomer.license}
+    onChange={(e) =>
+      setNewCustomer((prev) => ({ ...prev, license: e.target.value }))
+    }
+    style={{
+      marginBottom: "0.5rem",
+      width: "100%",
+      padding: "0.6rem",
+      borderRadius: "6px",
+      border: "1px solid #ccc",
+    }}
+  />
+  <input
+    placeholder="Fahrzeug"
+    value={newCustomer.car}
+    onChange={(e) =>
+      setNewCustomer((prev) => ({ ...prev, car: e.target.value }))
+    }
+    style={{
+      marginBottom: "0.5rem",
+      width: "100%",
+      padding: "0.6rem",
+      borderRadius: "6px",
+      border: "1px solid #ccc",
+    }}
+  />
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          style={{ marginBottom: "1rem" }}
-        />
+  <label
+    style={{
+      display: "block",
+      marginTop: "0.8rem",
+      marginBottom: "0.4rem",
+      fontSize: "0.95rem",
+      color: "#333",
+    }}
+  >
+    📎 Fahrzeugschein hochladen (optional)
+  </label>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={handleImageUpload}
+    style={{
+      marginBottom: "1rem",
+    }}
+  />
 
-        <button
-          onClick={handleAddCustomer}
-          style={{
-            padding: "0.6rem 1rem",
-            backgroundColor: "#2563eb",
-            color: "#fff",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer",
-          }}
-        >
-          + Hinzufügen
-        </button>
-      </div>
+  <button
+    onClick={handleAddCustomer}
+    style={{
+      padding: "0.6rem 1rem",
+      backgroundColor: "#2563eb",
+      color: "#fff",
+      border: "none",
+      borderRadius: "6px",
+      cursor: "pointer",
+      width: "100%",
+    }}
+  >
+    + Hinzufügen
+  </button>
+</div>
 
       {filteredCustomers.map((c, index) => (
         <div
